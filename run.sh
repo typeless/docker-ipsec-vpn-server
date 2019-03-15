@@ -146,6 +146,7 @@ L2TP_LOCAL=${VPN_L2TP_LOCAL:-'192.168.42.1'}
 L2TP_POOL=${VPN_L2TP_POOL:-'192.168.42.10-192.168.42.250'}
 XAUTH_NET=${VPN_XAUTH_NET:-'192.168.43.0/24'}
 XAUTH_POOL=${VPN_XAUTH_POOL:-'192.168.43.10-192.168.43.250'}
+XAUTH_LEFTSUBNET=${VPN_XAUTH_LEFTSUBNET:-'192.168.43.0/24'}
 DNS_SRV1=${VPN_DNS_SRV1:-'8.8.8.8'}
 DNS_SRV2=${VPN_DNS_SRV2:-'8.8.4.4'}
 DNS_SRVS="\"$DNS_SRV1 $DNS_SRV2\""
@@ -187,7 +188,7 @@ conn l2tp-psk
 
 conn xauth-psk
   auto=add
-  leftsubnet=0.0.0.0/0
+  leftsubnet=$XAUTH_LEFTSUBNET
   rightaddresspool=$XAUTH_POOL
   modecfgdns=$DNS_SRVS
   leftxauthserver=yes
